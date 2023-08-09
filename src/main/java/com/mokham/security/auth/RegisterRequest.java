@@ -1,6 +1,6 @@
 package com.mokham.security.auth;
 
-import com.mokham.security.model.Role;
+import com.mokham.security.model.db1.Role;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Data;

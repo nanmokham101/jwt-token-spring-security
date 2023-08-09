@@ -1,10 +1,10 @@
 package com.mokham.security.service;
 
-import com.mokham.security.dto.ProductDto;
-import com.mokham.security.model.Product;
-import com.mokham.security.model.User;
-import com.mokham.security.reposirory.ProductRepository;
-import com.mokham.security.reposirory.UserRepository;
+import com.mokham.security.model.db1.ProductDTO;
+import com.mokham.security.model.db1.Product;
+import com.mokham.security.model.db1.User;
+import com.mokham.security.repository1.ProductRepository;
+import com.mokham.security.repository1.UserRepository;
 import io.jsonwebtoken.Claims;
 import io.jsonwebtoken.Jwts;
 import lombok.extern.slf4j.Slf4j;
@@ -32,13 +32,13 @@ public class ProductServiceImpl implements ProductService{
     @Value("${application.security.jwt.secret-key}")
     private String secretKey;
 
-    private ProductDto convertEntityToDto(Product product) {
+    private ProductDTO convertEntityToDto(Product product) {
         modelMapper.getConfiguration()
                 .setMatchingStrategy(MatchingStrategies.LOOSE);
-        return modelMapper.map(product, ProductDto.class);
+        return modelMapper.map(product, ProductDTO.class);
     }
 
-    private Product convertDtoToEntity(ProductDto productDto, User user) {
+    private Product convertDtoToEntity(ProductDTO productDto, User user) {
         modelMapper.getConfiguration()
                 .setMatchingStrategy(MatchingStrategies.LOOSE);
         Product product = modelMapper.map(productDto, Product.class);
@@ -46,7 +46,7 @@ public class ProductServiceImpl implements ProductService{
         return product;
     }
     @Override
-    public String save(ProductDto productDto, String jwtToken) {
+    public String save(ProductDTO productDto, String jwtToken) {
         Claims claims = Jwts.parser().setSigningKey(secretKey).parseClaimsJws(jwtToken).getBody();
         String currentUserId = claims.getSubject();
 
@@ -63,7 +63,7 @@ public class ProductServiceImpl implements ProductService{
     }
 
     @Override
-    public ProductDto findById(Integer id){
+    public ProductDTO findById(Integer id){
         Optional<Product> productOptional = productRepository.findById(id);
 
         if (productOptional.isPresent()) {
@@ -75,7 +75,7 @@ public class ProductServiceImpl implements ProductService{
     }
 
     @Override
-    public List<ProductDto> getAll() {
+    public List<ProductDTO> getAll() {
         List<Product> productList = productRepository.findAll();
         return productList.stream()
                 .map(this::convertEntityToDto)
@@ -83,7 +83,7 @@ public class ProductServiceImpl implements ProductService{
     }
 
     @Override
-    public List<ProductDto> findByUserId(Integer id) {
+    public List<ProductDTO> findByUserId(Integer id) {
         log.info("id.... : "+ id);
         List<Product> productList = productRepository.findProductsByUserId(id);
         return productList.stream()

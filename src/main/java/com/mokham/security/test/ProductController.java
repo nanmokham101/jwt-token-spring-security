@@ -1,10 +1,10 @@
 package com.mokham.security.test;
 
-import com.mokham.security.dto.ProductDto;
-import com.mokham.security.model.Role;
-import com.mokham.security.reposirory.ProductRepository;
+import com.mokham.security.model.db1.ProductDTO;
+import com.mokham.security.model.db1.Role;
+import com.mokham.security.model.db2.CategoryDTO;
+import com.mokham.security.service.CategoryService;
 import com.mokham.security.service.ProductService;
-import com.mokham.security.service.ProductServiceImpl;
 import jakarta.servlet.http.HttpServletRequest;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpHeaders;
@@ -24,31 +24,31 @@ import java.util.List;
 
 public class ProductController {
     @Autowired
-    private ProductRepository productRepository;
+    private CategoryService categoryService;
     @Autowired
     private ProductService productService;
 
 
     @GetMapping
     @PreAuthorize("hasRole('ADMIN')")
-    public ProductDto getProductById(@RequestParam Integer id){
+    public ProductDTO getProductById(@RequestParam Integer id){
         return productService.findById(id);
     }
 
     @GetMapping("/all")
     @PreAuthorize("hasAnyRole('ADMIN','USER')")
-    public List<ProductDto> getAllProducts(){
+    public List<ProductDTO> getAllProducts(){
         return productService.getAll();
     }
 
     @GetMapping("/findProductsByUserId")
     @PreAuthorize("hasRole('ADMIN')")
-    public List<ProductDto> findByUserId(@RequestParam Integer id){
+    public List<ProductDTO> findByUserId(@RequestParam Integer id){
         return productService.findByUserId(id);
     }
 
     @PostMapping("/new")
-    public ResponseEntity<String> addProduct(@RequestBody ProductDto productDto, HttpServletRequest request) {
+    public ResponseEntity<String> addProduct(@RequestBody ProductDTO productDto, HttpServletRequest request) {
 
         Authentication authentication = SecurityContextHolder.getContext().getAuthentication();
         Collection<? extends GrantedAuthority> authorities = authentication.getAuthorities();
@@ -68,17 +68,13 @@ public class ProductController {
     }
 
 
-
-    @PutMapping
-    @PreAuthorize("hasAuthority('admin:update')")
-
-    public String put() {
-        return "PUT:: admin controller";
+    @PostMapping("/saveCategory")
+    public String saveTeacher(@RequestBody CategoryDTO categoryDTO) {
+       return categoryService.save(categoryDTO);
     }
-    @DeleteMapping
-    @PreAuthorize("hasAuthority('admin:delete')")
-
-    public String delete() {
-        return "DELETE:: admin controller";
+    @GetMapping("/allCategory")
+    @PreAuthorize("hasAnyRole('ADMIN','USER')")
+    public List<CategoryDTO> getAllCategory(){
+        return categoryService.getAll();
     }
 }

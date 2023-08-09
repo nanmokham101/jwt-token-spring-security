@@ -1,14 +1,14 @@
 package com.mokham.security.service;
 
-import com.mokham.security.dto.ProductDto;
+import com.mokham.security.model.db1.ProductDTO;
 
 import java.util.List;
 
 public interface ProductService {
-    String save(ProductDto productDto, String jwtToken);
-    ProductDto findById(Integer id);
+    String save(ProductDTO productDto, String jwtToken);
+    ProductDTO findById(Integer id);
 
-    List<ProductDto> getAll();
+    List<ProductDTO> getAll();
 
-    List<ProductDto> findByUserId(Integer id);
+    List<ProductDTO> findByUserId(Integer id);
 }

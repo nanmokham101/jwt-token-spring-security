@@ -1,6 +1,6 @@
-package com.mokham.security.config;
+package com.mokham.security.securityconfig;
 
-import com.mokham.security.reposirory.UserRepository;
+import com.mokham.security.repository1.UserRepository;
 import lombok.RequiredArgsConstructor;
 import org.modelmapper.ModelMapper;
 import org.springframework.context.annotation.Bean;

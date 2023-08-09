@@ -1,7 +1,7 @@
-package com.mokham.security.config;
+package com.mokham.security.securityconfig;
 
+import com.mokham.security.repository1.TokenRepository;
 import com.mokham.security.service.JwtService;
-import com.mokham.security.reposirory.TokenRepository;
 import jakarta.servlet.FilterChain;
 import jakarta.servlet.ServletException;
 import jakarta.servlet.http.HttpServletRequest;

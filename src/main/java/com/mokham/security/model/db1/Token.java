@@ -1,4 +1,4 @@
-package com.mokham.security.model;
+package com.mokham.security.model.db1;
 
 import jakarta.persistence.*;
 import lombok.AllArgsConstructor;

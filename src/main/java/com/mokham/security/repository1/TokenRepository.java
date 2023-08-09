@@ -1,6 +1,6 @@
-package com.mokham.security.reposirory;
+package com.mokham.security.repository1;
 
-import com.mokham.security.model.Token;
+import com.mokham.security.model.db1.Token;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.jpa.repository.Query;
 

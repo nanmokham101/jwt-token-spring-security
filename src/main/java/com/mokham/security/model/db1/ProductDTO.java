@@ -1,13 +1,10 @@
-package com.mokham.security.dto;
+package com.mokham.security.model.db1;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
-import com.fasterxml.jackson.annotation.JsonView;
-import com.mokham.security.model.User;
 import lombok.Data;
-import org.springframework.http.HttpStatusCode;
 
 @Data
-public class ProductDto {
+public class ProductDTO {
     private String name;
     private int price;
     private String description;

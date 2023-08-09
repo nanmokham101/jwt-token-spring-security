@@ -1,8 +1,6 @@
-package com.mokham.security.config;
+package com.mokham.security.securityconfig;
 
-import com.mokham.security.model.Role;
 import lombok.RequiredArgsConstructor;
-import org.hibernate.validator.internal.constraintvalidators.bv.number.bound.decimal.AbstractDecimalMaxValidator;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.security.authentication.AuthenticationProvider;

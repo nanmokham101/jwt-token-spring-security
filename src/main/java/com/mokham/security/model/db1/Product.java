@@ -1,7 +1,7 @@
-package com.mokham.security.model;
+package com.mokham.security.model.db1;
 
-import com.fasterxml.jackson.annotation.JsonBackReference;
 import com.fasterxml.jackson.annotation.JsonIgnore;
+import com.mokham.security.model.db1.User;
 import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
