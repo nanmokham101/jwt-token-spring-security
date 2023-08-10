@@ -1,4 +1,4 @@
-package com.mokham.security.test;
+package com.mokham.security.controller;
 
 import com.mokham.security.model.db1.ProductDTO;
 import com.mokham.security.model.db1.Role;
@@ -69,7 +69,7 @@ public class ProductController {
 
 
     @PostMapping("/saveCategory")
-    public String saveTeacher(@RequestBody CategoryDTO categoryDTO) {
+    public String saveCategory(@RequestBody CategoryDTO categoryDTO) {
        return categoryService.save(categoryDTO);
     }
     @GetMapping("/allCategory")

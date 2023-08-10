@@ -53,7 +53,7 @@ public class DB2Config {
         bean.setJpaVendorAdapter(adapter);
         HashMap<String,Object> properties = new HashMap<String, Object>();
         properties.put("hibernate.hbm2ddl.auto", "update");
-        properties.put("hibernate.dialect", "org.hibernate.dialect.PostgreSQLDialect");
+        properties.put("hibernate.dialect", "org.hibernate.dialect.MySQL8Dialect");
         bean.setJpaPropertyMap(properties);
         bean.setPackagesToScan("com.mokham.security.model.db2");
         return bean;
